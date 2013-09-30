@@ -16,6 +16,7 @@ public class Sick {
     public static void main(String[] args) {
         final int       SCREEN_WIDTH = 800;
         final int       SCREEN_HEIGHT = 600;
+        final int       FPS = 60;
 
         try {
             Display.setDisplayMode(new DisplayMode(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -26,7 +27,15 @@ public class Sick {
             System.exit(0);
         }
 
+        System.out.println(GL11.glGetString(GL11.GL_VENDOR));
+        System.out.println(GL11.glGetString(GL11.GL_VERSION));
+        System.out.println(GL11.glGetString(GL11.GL_RENDERER));
+        System.out.println(Display.getAdapter());
+        System.out.println(Display.getVersion());
+
+
         while (!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+            Display.sync(FPS);
             Display.update();
         }
         Display.destroy();
